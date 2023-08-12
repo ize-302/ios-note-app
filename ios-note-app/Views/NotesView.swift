@@ -12,9 +12,16 @@ struct NotesView: View {
     
     var body: some View {
         NavigationView {
-            List(notes, id: \.title) {note in
-                NoteItemView(note: note)
-            }.navigationTitle(Text("Notes"))
+            VStack {
+                HStack {
+                    Text("Notes").font(.title2)
+                    Spacer()
+                    NewNoteView()
+                }.padding(.leading, 20).padding(.trailing, 20)
+                List(notes, id: \.title) {note in
+                    NoteItemView(note: note)
+                }
+            }
         }
     }
 }
